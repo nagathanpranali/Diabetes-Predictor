@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Predictor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #89c2ff, #5aa9ff);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #e3f2ff, #cde7ff);
+            width: 420px;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            color: #1e3c72;
+        }
+
+        h1 {
+            margin-bottom: 18px;
+            font-weight: 800;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            white-space: nowrap;
+            color: #1e3c72;
+            letter-spacing: 1px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 14px;
+            border-radius: 8px;
+            border: 1px solid #bcdcff;
+            outline: none;
+            background: #f7fbff;
+            color: #1e3c72;
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: #7a9cc6;
+        }
+
+        input[type="number"]:focus {
+            border-color: #1e3c72;
+            box-shadow: 0 0 6px rgba(30,60,114,0.4);
+        }
+
+        .radio-group {
+            margin: 12px 0;
+        }
+
+        .radio-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .radio-options {
+            display: flex;
+            gap: 3px;
+        }
+
+        .radio-options label {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 6px;
+            border-radius: 8px;
+            background: #d6ecff;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .radio-options label:hover {
+            background: #bfe2ff;
+        }
+
+        input[type="radio"] {
+            margin-right: 3px;
+            transform: scale(1.05);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            margin-top: 15px;
+            padding: 11px;
+            font-size: 15px;
+            border-radius: 10px;
+            border: none;
+            background: #1e3c72;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 🔥 RESULT STYLE UPDATED */
+        h2 {
+            margin-top: 18px;
+            font-size: 28px;        /* bigger */
+            font-weight: 800;       /* bold */
+            text-align: center;     /* center */
+            padding: 12px;
+            border-radius: 10px;
+            background: #d6ecff;    /* highlight box */
+            color: #1e3c72;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Diabetes Predictor</h1>
+
+        <form method="POST">
+            <input type="number" name="age" step="0.01" placeholder="Enter Age" required>
+            <input type="number" name="bmi" step="0.01" placeholder="Enter BMI" required>
+            <input type="number" name="fs" step="0.01" placeholder="Enter Fasting Sugar" required>
+            <input type="number" name="hba1c" step="0.01" placeholder="Enter HbA1c" required>
+
+            <div class="radio-group">
+                <span class="radio-title">Gender</span>
+                <div class="radio-options">
+                    <label><input type="radio" name="gender" value="1" required> Female</label>
+                    <label><input type="radio" name="gender" value="2"> Male</label>
+                </div>
+            </div>
+
+            <div class="radio-group">
+                <span class="radio-title">Hypertension</span>
+                <div class="radio-options">
+                    <label><input type="radio" name="tension" value="1" required> No</label>
+                    <label><input type="radio" name="tension" value="2"> Yes</label>
+                </div>
+            </div>
+
+            <div class="radio-group">
+                <span class="radio-title">Family History</span>
+                <div class="radio-options">
+                    <label><input type="radio" name="fmly" value="1" required> No</label>
+                    <label><input type="radio" name="fmly" value="2"> Yes</label>
+                </div>
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        <h2>{{ msg }}</h2>
+    </div>
+</body>
+</html>
